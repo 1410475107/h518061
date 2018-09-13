@@ -1,0 +1,11 @@
+input{
+    width: 240px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.mydiv{
+    width: 200px;
+    height: 200px;
+    background-image: url(/img/33.png);
+}
