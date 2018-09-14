@@ -16,8 +16,5 @@ app.post('/addstu', (req ,res)=>{
 
 // post
 
-
-
-
 app.use(express.static('view'));
 app.listen(81);
