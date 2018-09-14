@@ -1,50 +1,57 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
 const ejs = require('ejs');
-//创建服务
-const server = express();
-
-//接收post过来的数据
-server.use(bodyParser.urlencoded({extended: true}));
-
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const app = express();
+//数据接收
+app.use(bodyParser.urlencoded({extended: true}));
 //数据库连接
-const conn = mysql.createConnection({
-    host:'127.0.0.1',  //http://1410475107.mysql.dbserver.com.cn
+const mydb = mysql.createConnection({
+    host:'127.0.0.1',
     user:'root',
     password:'123456',
     port:3306,
     database:'h51806'
 });
-conn.connect();
+mydb.connect();
 
-//模板引擎
-server.engine('html', ejs.renderFile);  //自定义模板引擎
-server.set('view engine', 'html');  //注册模板引擎到express
-server.set('views', './static');    //指定模板文件路径
+//模板引擎设置
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
+app.set('views', './static');
 
-//添加学生信息页面
-server.get('/add', (req ,res)=>{
-    res.render('add');//ejs模板引擎会处理一遍
-});
-//获取学生信息列表
-server.get('/list', (req ,res)=>{
-    // 到数据库里面查询数据
-    let sql = `SELECT * FROM students`;
-    conn.query(sql, (err, results)=>{
+//学生列表信息
+app.get('/list', (req ,res)=>{
+    let sql = 'SELECT * FROM students WHERE status = 1';
+    mydb.query(sql, (err, results)=>{
         if(err){
             console.log(err);
-            res.send('数据库操作操作');
+            res.send('数据库错误');
             return ;
         }
-        // res.send(results);
         let data = {};
         data.stulist = results;
         res.render('list', data);
     });
 });
+//删除学生信息
+app.get('/delstu', (req, res)=>{
+    //接收要删除的学生的id
+    let sid = req.query.sid;
+    // let sql = `DELETE  FROM students WHERE sid = ?`;
+    let sql = `UPDATE students SET status = 0 WHERE sid = ?`;
+    mydb.query(sql, sid, (err, result)=>{
+        if(err){
+            console.log(err);
+            res.json({r:'db_err'});
+            return ;
+        }
+        res.json({r:'success'});
+    });
 
-// 静态资源托管
-server.use(express.static('static'));
-// 端口监听
-server.listen(81);
+});
+
+
+
+app.use(express.static('static'));
+app.listen(81);

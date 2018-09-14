@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>学生信息</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container">
         <% include top.html %>
-
         <h1>学生信息列表</h1>
         <table class="table table-bordered">
             <thead>
@@ -22,9 +9,10 @@
                     <th>学号</th>
                     <th>手机号</th>
                     <th>添加时间</th>
+                    <th>操作</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody">
                 <% for(let s of stulist){ %>
                 <tr>
                     <td>
@@ -42,6 +30,7 @@
                     <td>
                         <%=s.addtimes.toLocaleString()%>
                     </td>
+                    <td><a href="###" sid="<%=s.sid%>" class="delstu">删除</a> </td>
                 </tr>
                 <%}%>
             </tbody>
@@ -50,7 +39,7 @@
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="/js/stu.js"></script>
 </body>
 
 </html>
