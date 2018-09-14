@@ -29,7 +29,7 @@ $('.addstu').click(function(){
         data:$('#addstu').serialize(),  //{id:33,name:'姓名'}
         success:function(data){  //执行成功的回调函数s
             if(data.r == 'ok'){
-                window.location.href = '/list';
+                window.location.href = '/stulist';
             }else{
                 console.log(data);
             }

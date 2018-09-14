@@ -37,8 +37,20 @@ app.post('/addstu', (req ,res)=>{
 });
 
 //学生列表信息
-app.get('/list', (req ,res)=>{
-    res.send('学生列表信息');
+app.get('/stulist', (req ,res)=>{
+    //到数据库里面把数据查出来
+    let sql= `SELECT username, stuid, tel, addtimes FROM students WHERE 1`;
+    conn.query(sql, (err, results)=>{
+        if(err){
+            console.log(err);
+            res.send({r:'db_err'});
+            return ;
+        }
+        console.log(results);
+        // res.send(results[0].addtimes.toLocaleString());
+        res.send(results);
+
+    });
 });
 
 //静态资源托管
