@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>显示学生信息</title>
+</head>
+<body>
+    <ul>
+        <%
+        let n = 1;
+        for(let s of stulist){ %>
+        <li><%=n++%>,姓名：<%=s.username%>，年龄：<%=s.age%>，简介：<%-s.info%>，<%=new Date().toLocaleString()%></li>
+        <% } %>
+    </ul>
+</body>
+</html>
+    
+

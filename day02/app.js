@@ -1,15 +1,16 @@
 const express = require('express');
-const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const app = express();
-// 接收POST过来的数据
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+const mysql = require('mysql');
+const ejs = require('ejs');
+//创建服务
+const server = express();
 
-//数据库连接  后面的数据库操作都可以使用这个连接
+//接收post过来的数据
+server.use(bodyParser.urlencoded({extended: true}));
+
+//数据库连接
 const conn = mysql.createConnection({
-    host:'127.0.0.1',
+    host:'127.0.0.1',  //http://1410475107.mysql.dbserver.com.cn
     user:'root',
     password:'123456',
     port:3306,
@@ -17,45 +18,33 @@ const conn = mysql.createConnection({
 });
 conn.connect();
 
-//处理一个POST请求：添加学生信息
-app.post('/addstu', (req ,res)=>{
-    console.log(req.body);
-    //把数据保存数据库  mysql
-    let d =req.body;
-    let sql = `INSERT INTO students(username, stuid, tel, addtimes) VALUES (?,?,?,?)`;
-    //"${d.username}", "${d.stuid}", "${d.tel}", "${new Date().toLocaleString()}"
-    conn.query(sql, [d.username, d.stuid, d.tel, new Date().toLocaleString()], (err, result)=>{
-        //如果执行错误，打印错误信息  如果没有错误，err是  null
-        if(err){
-            console.log(err);
-            res.json({r:'db_err'});
-            return ;
-        }
-        console.log(result);
-        res.json({r:'ok'});
-    });
-});
+//模板引擎
+server.engine('html', ejs.renderFile);  //自定义模板引擎
+server.set('view engine', 'html');  //注册模板引擎到express
+server.set('views', './static');    //指定模板文件路径
 
-//学生列表信息
-app.get('/stulist', (req ,res)=>{
-    //到数据库里面把数据查出来
-    let sql= `SELECT username, stuid, tel, addtimes FROM students WHERE 1`;
+//添加学生信息页面
+server.get('/add', (req ,res)=>{
+    res.render('add');//ejs模板引擎会处理一遍
+});
+//获取学生信息列表
+server.get('/list', (req ,res)=>{
+    // 到数据库里面查询数据
+    let sql = `SELECT * FROM students`;
     conn.query(sql, (err, results)=>{
         if(err){
             console.log(err);
-            res.send({r:'db_err'});
+            res.send('数据库操作操作');
             return ;
         }
-        console.log(results);
-        // res.send(results[0].addtimes.toLocaleString());
-        res.send(results);
-
+        // res.send(results);
+        let data = {};
+        data.stulist = results;
+        res.render('list', data);
     });
 });
 
-//静态资源托管
-app.use(express.static('static'));
-
-app.listen(81, () => {
-    console.log(`Server started on 81`);
-});
+// 静态资源托管
+server.use(express.static('static'));
+// 端口监听
+server.listen(81);

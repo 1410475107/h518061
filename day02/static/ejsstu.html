@@ -1,0 +1,12 @@
+
+    <% include header.html %>
+
+    <ol>
+        <% for(let s of stulist){ %>
+        <li>姓名：<%=s.username%>，年龄：<%=s.age%>，年龄：<%-s.info%></li>
+        <% } %>
+    </ol>
+
+    <% include footer.html %>
+    
+

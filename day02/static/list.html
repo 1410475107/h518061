@@ -11,32 +11,41 @@
 
 <body>
     <div class="container">
-        <h1>学生信息列表</h1>
+        <% include top.html %>
 
+        <h1>学生信息列表</h1>
         <table class="table table-bordered">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-          </table>
-        
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>手机号</th>
+                    <th>添加时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let s of stulist){ %>
+                <tr>
+                    <td>
+                        <%=s.sid%>
+                    </td>
+                    <td>
+                        <%=s.username%>
+                    </td>
+                    <td>
+                        <%=s.stuid%>
+                    </td>
+                    <td>
+                        <%=s.tel%>
+                    </td>
+                    <td>
+                        <%=s.addtimes.toLocaleString()%>
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
     </div>
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
