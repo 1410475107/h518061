@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody class="tbody">
-                <% for(let s of stulist){ %>
+                <% for(let s of students){ %>
                 <tr>
                     <td>
                         <%=s.sid%>
@@ -30,16 +30,13 @@
                     <td>
                         <%=s.addtimes.toLocaleString()%>
                     </td>
-                    <td><a href="###" sid="<%=s.sid%>" class="delstu">删除</a> </td>
+                    <td><a href="###" sid="<%=s.sid%>" class="delstu">删除</a> |
+                        <a href="/updstu?sid=<%=s.sid%>">修改</a>
+                    
+                    </td>
                 </tr>
                 <%}%>
             </tbody>
         </table>
-    </div>
-
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/js/stu.js"></script>
-</body>
-
-</html>
+        <% include footer.html %>
+   

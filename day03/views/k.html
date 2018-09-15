@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>信息</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>信息列表</h1>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="/k?page=<%=page-1%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <% for(let p=start; p<=end; p++){ %>
+                <li<%- (page==p)?(' class="active"'):''%>><a href="/k?page=<%=p%>"><%=p%></a></li>
+                <% } %>
+                <li>
+                    <a href="/k?page=<%=(page*1+1 > totalpage) ? totalpage:(page*1+1) %>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>关键词</th>
+                    <th>类目一</th>
+                    <th>类目二</th>
+                    <th>类目三</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <% for(let k of lists){ %>
+                <tr>
+                    <td>
+                        <%=k.id%>
+                    </td>
+                    <td>
+                        <%=k.kw%>
+                    </td>
+                    <td>
+                        <%=k.c1%>
+                    </td>
+                    <td>
+                        <%=k.c2%>
+                    </td>
+                    <td>
+                        <%=k.c3%>
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
