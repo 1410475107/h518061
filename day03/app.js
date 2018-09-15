@@ -25,38 +25,38 @@ app.engine('html', ejs.renderFile); //自定义一个模板引擎
 app.set('view engine', 'html'); //注册模板引擎到express
 app.set('views', './views'); //指定模板所在的文件夹
 
-app.get('/k', (req, res)=>{
+app.get('/k', (req, res) => {
     //任务一  查询总条数
     // 任务二  查询当前页数要显示的记录
     //定义每页显示多少条
-    let  pagenum = 20;
+    let pagenum = 20;
     // 当前是第几页  默认页数是 1
     let page = req.query.page ? req.query.page : 1;
     (page < 1) && (page = 1);
     async.series({
-        totalnums:function(cb){
+        totalnums: function (cb) {
             let sql = 'SELECT COUNT(id) AS totalnums FROM top20';
-            conn.query(sql, (err, result)=>{
+            conn.query(sql, (err, result) => {
                 //判断当前也是是否大于总页数
-                let totalpage = Math.ceil(result[0].totalnums/pagenum);
-                if(page > totalpage){
+                let totalpage = Math.ceil(result[0].totalnums / pagenum);
+                if (page > totalpage) {
                     page = totalpage;
                 }
                 cb(null, result[0].totalnums);
             });
         },
-        lists:function(cb){
+        lists: function (cb) {
             //查询50条显示到页面上
             let sql = 'SELECT * FROM top20 LIMIT ?, ?';
-            conn.query(sql, [pagenum*(page-1), pagenum], (err, results)=>{
+            conn.query(sql, [pagenum * (page - 1), pagenum], (err, results) => {
                 cb(null, results);
             });
         }
-    }, (err, data)=>{
+    }, (err, data) => {
         // 传递页数
         data.page = page;
         //计算总页数  向上取整
-        data.totalpage = Math.ceil(data.totalnums/pagenum);
+        data.totalpage = Math.ceil(data.totalnums / pagenum);
         //要循环的页数 起始位置 和  结束位置  
         /*
             End  -  start  = Showpage – 1
@@ -65,22 +65,24 @@ app.get('/k', (req, res)=>{
             End = page + (Showpage – 1)/2;   结束页数
         */
         let showpage = 9;
-        let start =  page-(showpage-1)/2;
-        let end =  page*1+(showpage-1)/2;
-        if(start < 1){
+        let start = page - (showpage - 1) / 2;
+        let end = page * 1 + (showpage - 1) / 2;
+        if (start < 1) {
             start = 1;
-            end = start+ showpage - 1; 
+            end = start + showpage - 1;
         }
-        if(end > data.totalpage){
+        if (end > data.totalpage) {
             end = data.totalpage;
-            start = end - showpage + 1 ;
-            if(start < 1){ start = 1; }
+            start = end - showpage + 1;
+            if (start < 1) {
+                start = 1;
+            }
         }
         data.start = start;
         data.end = end;
         res.render('k', data);
     });
-    
+
 })
 
 
