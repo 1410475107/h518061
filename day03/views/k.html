@@ -20,7 +20,7 @@
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <% for(var p=start; p<=end; p++){ %>
+                <% for(let p=start; p<=end; p++){ %>
                 <li<%- (page==p)?(' class="active"'):''%>><a href="/k?page=<%=p%>"><%=p%></a></li>
                 <% } %>
                 <li>

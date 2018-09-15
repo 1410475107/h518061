@@ -61,8 +61,8 @@ app.get('/k', (req, res)=>{
         /*
             End  -  start  = Showpage – 1
             End  - Showpage +1 = start  
-            Start = page –（Showpage – 1）/2;  开始页数
-            End = page + （Showpage – 1）/2;   结束页数
+            Start = page –(Showpage – 1)/2;  开始页数
+            End = page + (Showpage – 1)/2;   结束页数
         */
         let showpage = 9;
         let start =  page-(showpage-1)/2;
@@ -74,9 +74,7 @@ app.get('/k', (req, res)=>{
         if(end > data.totalpage){
             end = data.totalpage;
             start = end - showpage + 1 ;
-            if(start < 1){
-                start = 1;
-            }
+            if(start < 1){ start = 1; }
         }
         data.start = start;
         data.end = end;
