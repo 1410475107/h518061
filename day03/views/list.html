@@ -1,0 +1,42 @@
+
+        <% include top.html %>
+        <h1>学生信息列表</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>手机号</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <% for(let s of students){ %>
+                <tr>
+                    <td>
+                        <%=s.sid%>
+                    </td>
+                    <td>
+                        <%=s.username%>
+                    </td>
+                    <td>
+                        <%=s.stuid%>
+                    </td>
+                    <td>
+                        <%=s.tel%>
+                    </td>
+                    <td>
+                        <%=s.addtimes.toLocaleString()%>
+                    </td>
+                    <td><a href="###" sid="<%=s.sid%>" class="delstu">删除</a> |
+                        <a href="/updstu?sid=<%=s.sid%>">修改</a>
+                    
+                    </td>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+        <% include footer.html %>
+   
