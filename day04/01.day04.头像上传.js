@@ -28,7 +28,7 @@ conn.connect();
 //模板引擎设置
 app.engine('html', ejs.renderFile); //定义一个模板引擎
 app.set('view engine', 'html'); //注册模板引擎到express
-app.set('views', './views');
+app.set('views', './views');  //模板文件存放位置
 // 上传文件的文件夹设置
 // const upload = multer({dest:'uploads/'});
 const storage = multer.diskStorage({
