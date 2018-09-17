@@ -49,12 +49,13 @@ const upload = multer({
 //各种路由请求处理
 //显示上传页面
 app.get('/upload', (req, res) => {
-    res.render('upload_mul');
+    res.render('upload_ajax');
 });
 // 接收上传数据  使用第三方模块  multer
-app.post('/upload', upload.array('toppic'), (req, res) => {
-    console.log(req.files);
-    res.json(req.files);
+app.post('/upload', upload.single('images'), (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
+    res.json(req.file);
 });
 
 //静态资源托管

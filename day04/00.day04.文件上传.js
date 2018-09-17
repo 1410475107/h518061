@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
         //按照月份存放文件
         cb(null, `./uploads/${new Date().getFullYear()}/${(new Date().getMonth()+1).toString().padStart(2, '0')}`);
     },
-    filename: function (req, file, cb) { //文件命名
+    filename: function (req, file, cb) {
         let filename = new Date().valueOf() + '_' +  Math.random().toString().substr(2, 8) + '.' + file.originalname.split('.').pop();
         // originalname ：文件的原始名称，包括后缀  0.2365895665468465156  15363008071.45_633055.jpg
         cb(null, filename)
@@ -49,17 +49,16 @@ const upload = multer({
 //各种路由请求处理
 //显示上传页面
 app.get('/upload', (req, res) => {
-    res.render('upload_mul');
+    res.render('upload');
 });
 // 接收上传数据  使用第三方模块  multer
-app.post('/upload', upload.array('toppic'), (req, res) => {
-    console.log(req.files);
-    res.json(req.files);
+app.post('/upload', upload.single('myimg'), (req, res) => {
+    // req.body  
+    console.log(req.file);
+    res.send('文件上传成功');
 });
 
 //静态资源托管
-// 托管上传的文件
-app.use('/uploads',express.static('uploads'));
 app.use(express.static('static'));
 
 //端口监听：网卡给引用或者服务分配的编号  
