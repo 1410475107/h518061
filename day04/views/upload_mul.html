@@ -59,8 +59,10 @@
                     let str = '';
                     let path = [];
                     for (const top of data) {
-                        str += `<li><img src="${top.path}"></li>`;
-                        path.push(top.path);
+                        // str += `<li><img src="${top.path}"></li>`;
+                        // path.push(top.path);
+                        str += `<li><img src="${top}"></li>`;
+                        path.push(top);
                     }
                     document.querySelector('ul').innerHTML = str;
                     // document.querySelector('#img').src = data.path;

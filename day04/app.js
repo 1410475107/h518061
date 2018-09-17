@@ -1,66 +1,39 @@
 //基础框架 express
 const express = require('express');
-// 接收post数据
-const bodyParser = require('body-parser');
-//数据库操作模块  mysql
-const mysql = require('mysql');
-// 模板引擎
-const ejs = require('ejs');
-//文件上传模块
-const multer = require('multer');
-
-// 创建一个引用  或者  服务
+const cookieParser = require('cookie-parser');
 const app = express();
 
-//接收post数据
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-//数据库连接
-const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    port: 3306,
-    database: 'h51806'
-});
-conn.connect();
-//模板引擎设置
-app.engine('html', ejs.renderFile); //定义一个模板引擎
-app.set('view engine', 'html'); //注册模板引擎到express
-app.set('views', './views');
-// 上传文件的文件夹设置
-// const upload = multer({dest:'uploads/'});
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) { //存放路径
-        //按照月份存放文件
-        cb(null, `./uploads/${new Date().getFullYear()}/${(new Date().getMonth()+1).toString().padStart(2, '0')}`);
-    },
-    filename: function (req, file, cb) { //文件命名
-        let filename = new Date().valueOf() + '_' +  Math.random().toString().substr(2, 8) + '.' + file.originalname.split('.').pop();
-        // originalname ：文件的原始名称，包括后缀  0.2365895665468465156  15363008071.45_633055.jpg
-        cb(null, filename)
-    }
-});
-const upload = multer({
-    storage: storage
+//启用cookie解析
+let  secret = 'h5.app.baidu.com';
+app.use(cookieParser(secret));
+
+app.get('/a', (req ,res)=>{
+    let options = {signed:true, maxAge:30*24*3600*1000};
+    //设置cookie的方式
+    res.cookie('username', '徐宇');
+    res.cookie('age', '20', options);
+    res.cookie('passwd', '123456', {signed:true});
+    res.cookie('money', '999', options);
+    res.send('cookie设置完成');
 });
 
-//各种路由请求处理
-//显示上传页面
-app.get('/upload', (req, res) => {
-    res.render('upload_mul');
-});
-// 接收上传数据  使用第三方模块  multer
-app.post('/upload', upload.array('toppic'), (req, res) => {
-    console.log(req.files);
-    res.json(req.files);
+app.get('/b', (req ,res)=>{
+    res.send('cookie');
 });
 
-//静态资源托管
-// 托管上传的文件
-app.use('/uploads',express.static('uploads'));
-app.use(express.static('static'));
+app.get('/c', (req ,res)=>{
+    //获取cookie信息
+    console.log(req.cookies);
+    console.log(req.signedCookies);
+    res.send('你好，' + req.cookies.username);
+});
+
+app.get('/clear', (req, res)=>{
+    res.clearCookie('username');
+    res.send('清除cookie');
+});
+
+
 
 //端口监听：网卡给引用或者服务分配的编号  
 app.listen(81, () => {
