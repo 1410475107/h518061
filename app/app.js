@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const md5 = require('md5');
+global.md5 = require('md5');
 const svgCaptcha = require('svg-captcha');
 const multer = require('multer');
 /* 模块引用部分结束位置 */
@@ -20,7 +20,7 @@ app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
 app.set('views', './views');
 //数据库连接
-const  conn = mysql.createConnection({
+global.conn = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'123456',
@@ -35,6 +35,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge:30*24*3600*1000}
 }));
+
+
 //文件上传
 const diskstorage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -46,11 +48,30 @@ const diskstorage = multer.diskStorage({
     }
 });
 const upload = multer({storage: diskstorage});
+// 验证码图片
+app.get('/coder', (req, res) => {
+    var captcha = svgCaptcha.create({noise:4,ignoreChars: '0o1i', size:1,background: '#cc9966',height:38, width:90});
+	req.session.coder = captcha.text;
+	
+	res.type('svg'); // 使用ejs等模板时如果报错 res.type('html')
+	res.status(200).send(captcha.data);
+    
+});
 
+
+//方便测试---后面要删除
+app.use(function(req ,res, next){
+    req.session.aid = 1;
+    req.session.username = '管理员';
+    next();
+});
 
 //子路由
 //管理员登录
 app.use('/admin/login', require('./module/admin/login'));
+//管理员管理子路由
+app.use('/admin', require('./module/admin/index'));
+
 
 //静态资源托管
 app.use(express.static('static'));
