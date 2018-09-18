@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录页面</title>
+</head>
+<body>
+    <input type="text" name="coder" id="coder">
+    <img src="/coder" alt="" id="coderimg">
+    <input type="button" value="验证" id="btn">
+    <script>
+    //点击切换验证码
+    document.querySelector('#coderimg').onclick = function(){
+        this.src = '/coder?' + new Date();
+    }
+    //验证验证码是否正确
+    document.querySelector('#btn').onclick = function () {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/coder');
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        xhr.send('coder=' + document.querySelector('#coder').value);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState==4 && xhr.status==200){
+                let data = JSON.parse(xhr.responseText);
+                if(data.r == 'right'){
+                    console.log(data);
+                }else{
+                    console.log('error');
+                }
+            }
+        }
+    }
+    
+    </script>
+
+</body>
+</html>
