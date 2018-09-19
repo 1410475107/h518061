@@ -1,0 +1,28 @@
+<% include head.html%>
+<div class="layui-body mymain">
+    <span class="layui-breadcrumb">
+        <a href="/admin">首页</a>
+        <a href="/admin/catelist">分类管理</a>
+        <a><cite>分类修改</cite></a>
+    </span>
+    <hr>
+
+    <form class="layui-form" action="" id="updatecate">
+        <input type="hidden" value="<%=cate.cid%>" name="cid">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="catename" required lay-verify="required" value="<%=cate.catename%>" placeholder="请输入分类名称" autocomplete="off"
+                    class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" type="button" lay-submit lay-filter="updatecate">修改</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<% include foot.html%>

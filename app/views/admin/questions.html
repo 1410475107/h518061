@@ -1,0 +1,70 @@
+<% include head.html%>
+<div class="layui-body mymain">
+    <span class="layui-breadcrumb">
+        <a href="/admin">首页</a>
+        <a href="/admin/category">试题管理</a>
+        <a><cite>试题列表</cite></a>
+    </span>
+    <hr>
+    <table class="layui-table  mytable catelist">
+            <colgroup>
+              <col width="50">
+              <col width="500">
+              <col width="100">
+              <col width="60">
+
+              <col width="60">
+
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>题干</th>
+                <th>操作人</th>
+                <th>重要</th>
+                <th>难度</th>
+                <th>分类</th>
+                <th>添加时间</th>
+                <th>操作</th>
+              </tr> 
+            </thead>
+            <tbody>
+                <% for (let c of questions){ %>
+              <tr>
+                <td><%=c.qid%></td>
+                <td><%-c.title.replace(/<\/?.+?>/g, '').substring(0, 200)%></td>
+                <td><%=c.username%></td>
+                <td><%=c.import%></td>
+                <td><%=c.diffict%></td>
+                <td><%=c.catename%></td>
+                <td><%=c.addtimes.toLocaleString()%></td>
+                <td>
+                        <a href="###" class="delques" qid="<%=c.qid%>">删除</a>
+                        |
+                        <a href="/admin/updateques?qid=<%=c.qid%>">修改</a>
+                </td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
+
+          <div id="pages"></div>
+
+</div>
+<% include foot.html%>
+<script>
+  var laypage = layui.laypage;
+  laypage.render({
+    elem: 'pages'
+    ,count: <%=count%>
+    ,limit:<%=pagenum%>
+    ,curr:<%=page%>
+    ,jump: function(obj, first){
+        //首次不执行
+        if(!first){
+        window.location.href="/admin/questions?page=" + obj.curr
+        }
+    }
+  });
+</script>

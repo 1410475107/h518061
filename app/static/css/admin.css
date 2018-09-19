@@ -1,0 +1,41 @@
+.adminlogin{
+    width: 450px;
+    margin: 150px auto;
+}
+.coder{
+    padding-top: 0 !important;
+}
+#codeimg{
+    cursor: pointer;
+}
+.H{
+    color: red !important;
+}
+.layui-breadcrumb{
+    padding-left: 20px;
+}
+.mymain{
+    padding-top: 20px;
+    border-left: 2px solid rgb(187, 20, 31);
+}
+.layui-footer{
+    border-left: 2px solid rgb(187, 20, 31);
+
+}
+
+.mytable{
+    width: 98%;
+    margin: 10px 15px;
+}
+
+#addquestion input[type="text"], #addquestion .layui-form-selected{
+    width: 500px;
+    z-index: 999999;
+    text-align: left;
+}
+
+#pages{
+    margin-left: 20px;
+}
+
+

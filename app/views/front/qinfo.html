@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/front.css">
+</head>
+
+<body>
+    <div class="layui-fluid">
+
+
+        <ul class="layui-nav  layui-bg-green" lay-filter="">
+            <li class="layui-nav-item"><a href="">墨绿导航</a></li>
+            <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>
+            <li class="layui-nav-item"><a href="">最新活动</a></li>
+            <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">解决方案</a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd><a href="">移动模块</a></dd>
+                    <dd><a href="">后台模版</a></dd>
+                    <dd><a href="">电商平台</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
+
+
+        <div class="layui-row">
+            <div class="layui-col-md2">
+                <ul class="layui-nav layui-nav-tree " lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">选择分类</a>
+                        <dl class="layui-nav-child">
+                            <% for(let cate of catelist){%>
+                            <dd><a href="/questions?cid=<%=cate.cid%>">
+                                    <%=cate.catename%></a></dd>
+                            <%}%>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-col-md10">
+                <div class="layui-colla-item">
+                    <h3 class="layui-colla-title">
+                        <%=qinfo.catename%>
+                    </h3>
+
+                    <div class="layui-colla-content layui-show">
+                        <span>添加时间：
+                            <%=qinfo.addtimes.toLocaleString()%></span> |
+                        <span>重要度：
+                            <%=qinfo.import%></span> |
+                        <span>难度：
+                            <%=qinfo.diffict%></span> |
+                        <span><a href="###" class="collect">收藏</a></span>
+                        <hr>
+                        <%-qinfo.title%>
+                    </div>
+                </div>
+
+
+                <div class="layui-tab layui-tab-card">
+                        <ul class="layui-tab-title">
+                          <li class="layui-this">做题</li>
+                          <li>答案</li>
+                          <li>试题解析</li>
+                          <li>试题评论</li>
+                        </ul>
+                        <div class="layui-tab-content" style="height: 100px;">
+                          <div class="layui-tab-item layui-show">
+                              做题的文本框
+                          </div>
+                          <div class="layui-tab-item"><%-qinfo.answer%></div>
+                          <div class="layui-tab-item"><%-qinfo.anyle%></div>
+                          <div class="layui-tab-item">
+                            评论列表--循环展示
+                            <textarea name="" required lay-verify="required" placeholder="请输入" class="layui-textarea"></textarea>
+                            <button class="layui-btn" type="button">评论</button>
+                            
+
+                          </div>
+                        </div>
+                      </div>
+            </div>
+        </div>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/layui/layui.all.js"></script>
+
+</body>
+
+</html>
