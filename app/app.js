@@ -73,11 +73,11 @@ app.post('/uploads', upload.array('images', 1000), (req ,res)=>{
     });
 });
 //方便测试---后面要删除
-app.use(function(req ,res, next){
-    req.session.aid = 1;
-    req.session.username = '管理员';
-    next();
-});
+// app.use(function(req ,res, next){
+//     req.session.aid = 1;
+//     req.session.username = '管理员';
+//     next();
+// });
 
 //子路由
 //管理员登录

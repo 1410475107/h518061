@@ -11,8 +11,6 @@
 
 <body>
     <div class="layui-fluid">
-
-
         <ul class="layui-nav  layui-bg-green" lay-filter="">
             <li class="layui-nav-item"><a href="">墨绿导航</a></li>
             <li class="layui-nav-item layui-this"><a href="">产品</a></li>
@@ -31,7 +29,6 @@
             </li>
             <li class="layui-nav-item"><a href="">社区</a></li>
         </ul>
-
 
         <div class="layui-row">
             <div class="layui-col-md2">
@@ -66,32 +63,32 @@
                     </div>
                 </div>
 
-
                 <div class="layui-tab layui-tab-card">
-                        <ul class="layui-tab-title">
-                          <li class="layui-this">做题</li>
-                          <li>答案</li>
-                          <li>试题解析</li>
-                          <li>试题评论</li>
-                        </ul>
-                        <div class="layui-tab-content" style="height: 100px;">
-                          <div class="layui-tab-item layui-show">
-                              做题的文本框
-                          </div>
-                          <div class="layui-tab-item"><%-qinfo.answer%></div>
-                          <div class="layui-tab-item"><%-qinfo.anyle%></div>
-                          <div class="layui-tab-item">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">做题</li>
+                        <li>答案</li>
+                        <li>试题解析</li>
+                        <li>试题评论</li>
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100px;">
+                        <div class="layui-tab-item layui-show">
+                            做题的文本框
+                        </div>
+                        <div class="layui-tab-item">
+                            <%-qinfo.answer%>
+                        </div>
+                        <div class="layui-tab-item">
+                            <%-qinfo.anyle%>
+                        </div>
+                        <div class="layui-tab-item">
                             评论列表--循环展示
                             <textarea name="" required lay-verify="required" placeholder="请输入" class="layui-textarea"></textarea>
                             <button class="layui-btn" type="button">评论</button>
-                            
-
-                          </div>
                         </div>
-                      </div>
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <br>
         <br>

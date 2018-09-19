@@ -1,6 +1,14 @@
 const express = require('express');
 const async = require('async');
 const router = express.Router();
+// 登录验证
+router.use((req, res, next)=>{
+    if(!req.session.aid){
+         res.redirect('/admin/login');
+        return ;
+    }
+    next();
+});
 
 router.get('/', (req, res)=>{
     let data={};
