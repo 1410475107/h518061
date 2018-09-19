@@ -1,4 +1,5 @@
 const express = require('express');
+const async = require('async');
 const router = express.Router();
 
 router.get('/', (req, res)=>{
@@ -100,6 +101,66 @@ router.get('/addquestion', (req, res)=>{
     
 });
 
+
+router.post('/addquestion', (req, res)=>{
+    let d = req.body;
+    let sql = 'INSERT INTO questions VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+
+    let data= [ null, 
+                d.title,
+                d.cid,
+                d.answer,
+                d.anyle,
+                d.keywords,
+                d.import,
+                d.diffict,
+                d.comefrom,
+                req.session.aid, 
+                req.session.username, 
+                new Date().toLocaleString(),
+                1];
+    conn.query(sql, data, (err, result)=>{
+        if(err){
+            console.log(err);
+            res.json({r:'db_err'});
+            return ;
+        }
+        res.json({r:'success'});
+    });
+});
+
+//管理试题
+router.get('/questions', (req, res)=>{
+    let data={};
+    data.username = req.session.username;
+    //当前页数
+    let pagenum = 1;
+    data.pagenum = pagenum;
+
+    let page = req.query.page ? req.query.page : 1;
+    data.page = page;
+    async.series({
+        count: function (callback) {
+            let sql = 'SELECT COUNT(*) AS nums FROM questions WHERE status = 1';
+            conn.query(sql, (err, result) => {
+                callback(null, result[0].nums);
+            });
+        },
+        questions:function (callback) {
+            //查询分类信息
+            let sql = 'SELECT q.*, c.catename FROM questions AS q  LEFT JOIN category AS c ON q.cid = c.cid WHERE q.status = 1 LIMIT ?, ?';
+            conn.query(sql, [pagenum*(page-1), pagenum], (err, results)=>{
+                callback(null, results);
+            });
+        }
+    }, (err, result) => {
+        data.count = result.count;
+        data.questions = result.questions;
+        res.render('admin/questions', data);
+    });
+    
+    
+});
 
 
 module.exports = router;

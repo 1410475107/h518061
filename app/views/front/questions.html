@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/front.css">
+</head>
+
+<body>
+    <div class="layui-fluid">
+
+
+        <ul class="layui-nav  layui-bg-green" lay-filter="">
+            <li class="layui-nav-item"><a href="">墨绿导航</a></li>
+            <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>
+            <li class="layui-nav-item"><a href="">最新活动</a></li>
+            <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">解决方案</a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd><a href="">移动模块</a></dd>
+                    <dd><a href="">后台模版</a></dd>
+                    <dd><a href="">电商平台</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
+
+
+        <div class="layui-row">
+            <div class="layui-col-md2">
+                <ul class="layui-nav layui-nav-tree " lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">选择分类</a>
+                        <dl class="layui-nav-child">
+                            <% for(let cate of catelist){%>
+                            <dd><a href="/questions?cid=<%=cate.cid%>"><%=cate.catename%></a></dd>
+                            <%}%>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-col-md10">
+                <div class="layui-collapse">
+                        <% for (let c of questions){ %>
+                            <div class="layui-colla-item">
+                                    <h3 class="layui-colla-title"><%=c.catename%></h3>
+
+                                    <div class="layui-colla-content layui-show">
+                                        <span>添加时间：<%=c.addtimes.toLocaleString()%></span> |
+                                        <span>重要度：<%=c.import%></span> |
+                                        <span>难度：<%=c.diffict%></span> |
+                                        <span><a href="/questions/qinfo?qid=<%=c.qid%>" class="doit">做题</a></span> |
+                                        <span><a href="###" class="collect">收藏</a></span>
+                                        <hr>
+                                        <%-c.title.replace(/<\/?.+?>/g, '').substring(0, 500)%>
+                                    </div>
+                                </div>
+
+                           
+                            <%}%>
+
+                    
+                   
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/layui/layui.all.js"></script>
+
+</body>
+
+</html>

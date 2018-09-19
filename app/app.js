@@ -11,6 +11,7 @@ const multer = require('multer');
 /* 模块引用部分结束位置 */
 const app = express();
 //定义各种参数
+let hostname = 'http://lulaoshi:81/';
 let secret = 'sports.app.myweb.www';
 // 启用中间件
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,7 +37,6 @@ app.use(session({
     cookie: {maxAge:30*24*3600*1000}
 }));
 
-
 //文件上传
 const diskstorage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -58,7 +58,20 @@ app.get('/coder', (req, res) => {
     
 });
 
-
+// 上传图片接口
+app.post('/uploads', upload.array('images', 1000), (req ,res)=>{
+    console.log(req.files);
+    let data = [];
+    for (const ad of req.files) {
+        //把反斜线转成斜线，防止各种转义引起的路径错误
+        let path = hostname +  ad.path.replace(/\\/g, '/');
+        data.push(path);
+    }
+    res.json({
+        "errno": 0,
+        "data": data
+    });
+});
 //方便测试---后面要删除
 app.use(function(req ,res, next){
     req.session.aid = 1;
@@ -73,7 +86,14 @@ app.use('/admin/login', require('./module/admin/login'));
 app.use('/admin', require('./module/admin/index'));
 
 
+//前台用户子路由
+app.use('/', require('./module/front/'));
+//试题部分
+app.use('/questions', require('./module/front/questions'));
+
+
 //静态资源托管
+app.use('/uploads', express.static('uploads'));
 app.use(express.static('static'));
 
 app.listen(81, () => {

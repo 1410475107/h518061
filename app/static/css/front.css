@@ -1,0 +1,18 @@
+.layui-fluid{
+    padding: 0;
+}
+.layui-nav-tree{
+    width: 100%;
+    border-radius: 0;
+    margin-top: 20px;
+}
+
+.layui-collapse{
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+.doit, .doit:hover{
+    color: brown;
+}

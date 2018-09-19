@@ -48,4 +48,20 @@ $(function () {
             }
         });
       });
+
+      //添加试题
+      form.on('submit(addquestion)', function(data){
+        $.ajax({
+            url: '/admin/addquestion',
+            type: 'POST',
+            dataType: 'JSON',
+            data: $('#addquestion').serialize(),
+            // data:data.field,
+            success: function (result) {
+                console.log(result);
+            }
+        });
+        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+      });
+
 });
