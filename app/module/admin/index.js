@@ -37,7 +37,7 @@ router.post('/addcategory', (req, res)=>{
 });
 
 
-//添加栏目
+//修改栏目
 router.get('/updatecate', (req, res)=>{
     let data={};
     data.username = req.session.username;
@@ -56,6 +56,7 @@ router.get('/updatecate', (req, res)=>{
 });
 router.post('/updatecate', (req, res)=>{
     let d = req.body;
+    console.log(d);
     let sql = 'UPDATE category SET catename = ? WHERE cid = ?';
     let data= [d.catename, d.cid];
     conn.query(sql, data, (err, result)=>{

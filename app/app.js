@@ -24,11 +24,12 @@ app.set('views', './views');
 global.conn = mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'123456',
+    password:'880508',
     port:3306,
     database:'examapp'
 });
 conn.connect();
+
 //启用session
 app.use(session({
     secret:secret,
@@ -98,7 +99,6 @@ app.get('/test', (req, res)=>{
 //静态资源托管
 app.use('/uploads', express.static('uploads'));
 app.use(express.static('static'));
-
-app.listen(81, () => {
+app.listen(82, () => {
     console.log('成功启动...');
 });
