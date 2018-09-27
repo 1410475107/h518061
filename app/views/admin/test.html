@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>carousel模块快速使用</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+
+<body>
+
+    <div class="layui-carousel" id="test1">
+        <div carousel-item>
+            <div><img src="http://www.jiakaobaodian.com/core-assets/static/images/common/home_banner_jiaxiaobang.jpg"
+                    alt=""></div>
+            <div><img src="http://www.jiakaobaodian.com/core-assets/static/images/common/home_banner_new1.png" alt=""></div>
+        </div>
+    </div>
+    <!-- 条目中可以是任意内容，如：<img src=""> -->
+
+    <script src="/layui/layui.all.js"></script>
+    <script>
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1',
+            width: '100%', //设置容器宽度
+            arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    </script>
+</body>
+
+</html>

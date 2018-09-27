@@ -91,7 +91,10 @@ app.use('/', require('./module/front/'));
 //试题部分
 app.use('/questions', require('./module/front/questions'));
 
-
+//测试页面
+app.get('/test', (req, res)=>{
+    res.render('admin/test');
+});
 //静态资源托管
 app.use('/uploads', express.static('uploads'));
 app.use(express.static('static'));
