@@ -13,10 +13,40 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-    res.send('admin/login');
+    res.render('index');
 });
 
 
+app.get('/person', (req, res) => {
+    res.render('person');
+});
+
+app.get('/api', (req, res) => {
+    res.render('api');
+});
+
+
+app.get('/article', (req, res) => {
+    res.render('article');
+});
+
+
+app.get('/cookie', (req, res) => {
+    res.render('cookie');
+});
+
+
+app.get('/s1', (req, res) => {
+    res.render('storage1');
+});
+
+app.get('/s2', (req, res) => {
+    res.render('storage2');
+});
+
+app.get('/s3', (req, res) => {
+    res.render('storage3');
+});
 
 
 

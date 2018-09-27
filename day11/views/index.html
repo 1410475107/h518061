@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地数据存储</title>
+</head>
+<body>
+    本地数据存储
+    <a href="/person">查看用户信息</a>
+    <script>
+        window.localStorage.name = '李露';
+        window.localStorage.age = 20;
+        //存储对象类型的数据
+        localStorage.person = JSON.stringify({name:'李强', age:22, heigh:178});
+        //存储数组类型
+        localStorage.students = JSON.stringify([{name:'李强', age:22, heigh:178}, {name:'龙宇', age:21, heigh:178}]);
+        console.log(localStorage);
+    </script>
+
+</body>
+</html>

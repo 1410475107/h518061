@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookie</title>
+</head>
+<body>
+    cookie实现本地数据存储  
+    <script>
+        
+        document.cookie = 'name=刘桐;max-age=' + 30*24*3600;
+        document.cookie = 'age=20';
+        let geyan = escape('I  &nbsp;  Love  &nbsp; Coder');
+        document.cookie = 'geyan=' + geyan;
+        
+
+        console.log(cookieparser(document.cookie));
+        console.log(document.cookie);
+        
+        function cookieparser(str){
+            //name=刘桐; age=20; geyan=I%20%20%26nbsp%3B%20%20Love%20%20%26nbsp%3B%20Coder
+            let arr = str.split('; ');
+            //['name=刘桐', 'age=20', 'geyan=I%20%20%26nbsp%3B%20%20Love%20%20%26nbsp%3B%20Coder']
+            let obj = {};
+            for (const c of arr) {
+                let a = c.split('=');
+                obj[a[0]] = unescape(a[1]);
+            }
+
+            return obj;
+        }
+
+    </script>
+
+</body>
+</html>

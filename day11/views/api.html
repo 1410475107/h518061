@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地数据存储</title>
+</head>
+<body>
+    使用api操作本地存储的数据  <a href="/del.html">删除信息</a>
+    <a href="/person">查看用户信息</a>
+
+    <a href="/article">继续看文章</a>
+    <script>
+        //增加
+        localStorage.setItem('nums', '32');
+        localStorage.setItem('add', '17#310');
+
+        console.log(localStorage.getItem('add'));
+
+
+    </script>
+
+</body>
+</html>

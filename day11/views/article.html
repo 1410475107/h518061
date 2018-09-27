@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章详情</title>
+    <style>
+        .article {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="article">
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+        <a href="/api">页面跳转</a>
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+        在遵守localStorage作用域的基础之上，有自己更严格的作用域：
+        同一个标签页；
+        生命周期：关闭窗口数据被清除；
+
+
+        在看一篇文章的时候 看到中间位置 跳转到另外一个页面
+
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            //滚动到历史位置
+            console.log(sessionStorage.getItem('top'));
+            document.documentElement.scrollTop = sessionStorage.getItem('top');
+
+            //记录滚动位置
+            window.onscroll = function () {
+                let top = document.documentElement.scrollTop || window.pageYOffset;
+                console.log(top);
+                window.sessionStorage.setItem('top', top);
+            }
+        }
+    </script>
+</body>
+
+</html>
