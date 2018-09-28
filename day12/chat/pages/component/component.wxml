@@ -1,0 +1,28 @@
+<view id='myview' hover-class="my">
+    视图容器
+</view>
+
+
+
+<swiper autoplay="true" interval="2000" indicator-dots="true" bindchange="changgeimg">
+<swiper-item>
+    <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+</swiper-item>
+<swiper-item>
+    <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+</swiper-item>
+<swiper-item>
+    <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+</swiper-item>
+
+</swiper>
+
+
+<icon type="success"></icon>
+<icon type="success_no_circle" color="#f01" size='32'></icon>
+
+
+<rich-text nodes="{{info}}">
+
+
+</rich-text>
