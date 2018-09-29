@@ -1,0 +1,22 @@
+/* pages/viewi/viewi.wxss */
+.menu{
+    width: 750rpx;
+    height: 36px;
+    line-height: 36px;
+    background-color: rgb(223, 124, 124);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container{
+    background-color: #fff;
+    border-top: 2px solid #fac;
+    
+}
+.question rich-text{
+display: block;
+text-align: left;
+width: 700rpx;
+padding: 25rpx;
+border-bottom: 1px solid #ddd;
+}

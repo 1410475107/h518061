@@ -1,0 +1,16 @@
+.myclass{
+    width: 750rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    background-color: #5ac;
+    color: #fff;
+    /* position: fixed; */
+}
+
+.question{
+    padding: 20rpx;
+    line-height: 40rpx;
+    border-bottom: 1px dashed #5ac;
+    font-size: 14px;
+}

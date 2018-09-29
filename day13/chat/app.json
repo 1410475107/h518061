@@ -1,0 +1,46 @@
+{
+    "pages": [
+        "pages/viewi/viewi",
+        "pages/request/request",
+        "pages/form/form",
+        "pages/component/component",
+        "pages/students/students",
+        "pages/my/my",
+        "pages/logs/logs",
+        "pages/index/index",
+        "pages/abc/abc",
+        "pages/question/question"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#f08",
+        "navigationBarTitleText": "H51806小程序",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "color": "green",
+        "selectedColor": "blue",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "组件"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "text": "日志",
+                "iconPath": "/image/icon_API.png",
+                "selectedIconPath": "/image/icon_API_HL.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "接口"
+            },
+            {
+                "pagePath": "pages/request/request",
+                "text": "表单操作"
+            }
+        ]
+    }
+}

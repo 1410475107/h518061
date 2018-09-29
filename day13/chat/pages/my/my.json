@@ -1,0 +1,8 @@
+{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "我的第一个小程序页面",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance":100,
+    "enablePullDownRefresh":true
+}

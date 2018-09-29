@@ -1,0 +1,36 @@
+/* pages/form/form.wxss */
+.t{
+    width: 750rpx;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #ddd;
+}
+
+input{
+    border-bottom: 1px solid #ccc;
+     display: inline-block;
+     width: 650rpx;
+     /* float: right; */
+}
+
+.pclass{
+    font-size: 14px;
+    font-family: 微软雅黑;
+    color: rgb(241, 41, 41);
+   
+}
+
+.title{
+    font-size: 14px;
+    width: 100rpx;
+    padding-left: 10rpx;
+    clear: both;
+}
+
+.radio-group, radio{
+    
+     display: inline-block;
+     width: 550rpx;
+     font-size: 14px;
+}

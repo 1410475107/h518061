@@ -1,0 +1,17 @@
+<!--pages/question/question.wxml-->
+<view class='container'>
+    <view class='menu'>题干</view>
+
+    <rich-text nodes="{{qinfo.title}}"></rich-text>
+
+    <form bindsubmit='doit'>
+        <view class="section">
+            <textarea name="answer" class='answer'  auto-height placeholder="自动变高" />
+        </view>
+        <button form-type='submit'>提交答案</button>
+    </form>
+
+    <view class='menu' bindtap='showAnswer'>点击查看答案</view>
+    <rich-text nodes="{{qinfo.answer}}" wx:if="{{ifshow}}"></rich-text>
+
+</view>

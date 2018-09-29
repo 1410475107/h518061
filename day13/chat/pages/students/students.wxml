@@ -1,0 +1,33 @@
+<!--pages/students/students.wxml-->
+<text>pages/students/students.wxml</text>
+<view>
+    <view wx:for="{{students}}" wx:key="index">{{index}}，{{item}}</view>
+</view>
+
+<view>
+    <view wx:for="{{students}}" wx:for-index="num" wx:for-item="stu" wx:key="num">{{num+1}}，{{stu}}</view>
+</view>
+
+
+<view>
+    <view wx:for="{{students1}}" wx:for-index="n" wx:for-item="stu" wx:key="n">
+        <text>姓名：{{stu.name}}</text>,
+        <text>年龄：{{stu.age}}</text>
+    </view>
+
+    <block wx:for="{{students1}}" wx:for-index="n" wx:for-item="stu" wx:key="n">
+        <text>姓名：{{stu.name}}</text>,
+        <text>年龄：{{stu.age}}</text>
+    </block>
+
+</view>
+
+<view wx:if="{{ifshow}}" bindtap='hideme'>
+    我是否显示
+</view>
+
+<button bindtap='clikeMe' data-id="20">点击我</button>
+
+
+<button bindlongpress='longclikeMe' data-id="20">长时间点击我</button>
+

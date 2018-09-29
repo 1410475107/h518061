@@ -1,0 +1,9 @@
+<!--pages/viewi/viewi.wxml-->
+<view class='menu'>前端面试题大全</view>
+
+<view class='container'>
+    <view class='question' wx:for="{{qlist}}" wx:for-index="qid" wx:for-item="q" wx:key="qid">
+        <text>{{q.qid}}</text><rich-text nodes="{{q.title}}" data-qid="{{q.qid}}"  bindtap='question'></rich-text>
+    </view>
+
+</view>

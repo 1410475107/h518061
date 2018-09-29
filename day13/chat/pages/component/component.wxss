@@ -1,0 +1,19 @@
+/* pages/component/component.wxss */
+#myview{
+    width: 750rpx;
+    background-color: #eee;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.my{
+    background-color: #fff !important;
+    color: blue;
+}
+
+swiper-item,swiper,image{
+    width: 750rpx;
+    height: 562rpx;
+}

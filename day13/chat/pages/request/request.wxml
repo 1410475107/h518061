@@ -1,0 +1,16 @@
+<!--pages/request/request.wxml-->
+<text>学生信息</text>
+<form bindsubmit='searchStudents'>
+<input name="username" value='' placeholder='请输入学生姓名'></input>
+<button form-type='submit'>查询</button>
+</form>
+
+<view>
+    <view wx:for="{{students}}" wx:for-index="sid" wx:for-item="stu" wx:key="sid">
+        {{stu.name}}
+    </view>
+</view>
+
+<image src="{{imgsrc}}" mode="widthFix" bindtap='uploadImg'></image>
+
+<button bindtap="gotoC">跳转</button>

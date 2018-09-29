@@ -1,0 +1,8 @@
+<view class='myclass'>
+    面试题大全
+</view>
+<navigator wx:for="{{qlist}}" wx:for-index="qid" wx:for-item="q" wx:key="qid" url='/pages/info/info?qid={{q.qid}}'>
+    <view class='question'>
+        <rich-text nodes="{{q.qid}}，{{q.title}}"></rich-text>
+    </view>
+</navigator>

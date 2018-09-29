@@ -1,0 +1,17 @@
+<!--pages/my/my.wxml-->
+<text>pages/my/my.wxml</text>
+
+<b class="b" bindtap="clickme">{{myname}}</b>
+
+<view class='myclass'>
+    <text>我的文字信息</text>
+</view>
+
+
+<view>服务器地址：{{hostname}}</view>
+<view class='container'>
+{{add}}
+<button bindtap='changeAdd'>改变地址</button>
+</view>
+
+<button open-type="share">分享</button>

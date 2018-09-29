@@ -15,6 +15,7 @@ let hostname = 'http://lulaoshi:81/';
 let secret = 'sports.app.myweb.www';
 // 启用中间件
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser(secret));
 //模板引擎设置
 app.engine('html', ejs.renderFile);
@@ -72,12 +73,6 @@ app.post('/uploads', upload.array('images', 1000), (req ,res)=>{
         "data": data
     });
 });
-//方便测试---后面要删除
-// app.use(function(req ,res, next){
-//     req.session.aid = 1;
-//     req.session.username = '管理员';
-//     next();
-// });
 
 //子路由
 //管理员登录
@@ -90,6 +85,10 @@ app.use('/admin', require('./module/admin/index'));
 app.use('/', require('./module/front/'));
 //试题部分
 app.use('/questions', require('./module/front/questions'));
+
+//小程序  API
+app.use('/wx', require('./module/wx/'));
+
 
 //测试页面
 app.get('/test', (req, res)=>{
