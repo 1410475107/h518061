@@ -1,0 +1,44 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/list/list",
+        "pages/logs/logs",
+        "pages/qinfo/qinfo",
+        "pages/person/person"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#c7d",
+        "navigationBarTitleText": "华清远见",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "selectedColor":"#aa11ff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "images/home.png",
+                "selectedIconPath": "images/home.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "iconPath": "images/good.png",
+                "selectedIconPath": "images/good.png",
+                "text": "精选"
+            },
+            {
+                "pagePath": "pages/list/list",
+                "iconPath": "images/exam.png",
+                "selectedIconPath": "images/exam.png",
+                "text": "题库"
+            },
+            {
+                "pagePath": "pages/person/person",
+                "iconPath": "images/person.png",
+                "selectedIconPath": "images/person.png",
+                "text": "我的"
+            }
+        ]
+    }
+}

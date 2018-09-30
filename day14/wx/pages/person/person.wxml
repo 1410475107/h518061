@@ -1,0 +1,8 @@
+<view class='container'>
+    <navigator wx:for="{{qlist}}" wx:for-index="qid" wx:for-item="q" wx:key="qid" url='/pages/qinfo/qinfo?qid={{q.qid}}'>
+    <view>
+        <rich-text nodes="{{q.title}}"></rich-text>
+    </view>
+    </navigator>
+
+</view>

@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- 提示用户授权 使用事件：bindgetuserinfo -->
+    <view class='person' wx:if="{{hasUserInfo}}">
+        <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+
+    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' wx:else>开启面试之旅</button>
+    
+</view>

@@ -1,0 +1,10 @@
+.container{
+    padding-top: 15px;
+}
+.container view{
+    width: 730rpx;
+    line-height: 25px;
+    border-bottom: 1px dashed #c08;
+    text-align: left;
+    padding-left: 20rpx;
+}
